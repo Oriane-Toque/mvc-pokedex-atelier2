@@ -2,11 +2,23 @@
 
   namespace Pokedex\Controllers;
 
+  use Pokedex\Models\Pokemon;
+
   class MainController {
 
     public function home() {
 
-      $this->show('home');
+      // j'instancie mon pokemon Model
+      $pokemonModel = new Pokemon();
+      // j'appelle la méthode pour récupérer tous mes pokemons
+      $pokemons = $pokemonModel->findAll();
+
+      // je stocke tous mes objets dans mon tableau afin d'y avoir accès dans ma page home
+      $viewVars = [
+        'pokemons' => $pokemons
+      ];
+
+      $this->show('home', $viewVars);
     }
 
     public function details() {
@@ -14,7 +26,7 @@
       $this->show('details');
     }
 
-    private function show($viewName) {
+    private function show($viewName, $viewVars = []) {
 
       global $router;
 
