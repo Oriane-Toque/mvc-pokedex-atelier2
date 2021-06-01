@@ -40,6 +40,26 @@
       return $result;
     }
 
+    public function find($id)
+    {
+
+      $pdo = Database::getPDO();
+
+      // requete permettant de récupérer un pokemon selon son id
+      $sql = "
+        SELECT *
+        FROM `pokemon`
+        WHERE `id` = $id
+      ";
+
+      // execution de la requete
+      $pdoStatment = $pdo->query($sql);
+      // je récupère le resultat sous forme d'objets
+      $result = $pdoStatment->fetchObject('\Pokedex\models\Pokemon');
+
+      return $result;
+    }
+
     /**
      * Get the value of id
      */ 

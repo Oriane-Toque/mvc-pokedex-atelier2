@@ -9,9 +9,9 @@
     public function home() {
 
       // j'instancie mon pokemon Model
-      $pokemonModel = new Pokemon();
+      $pokemonsModel = new Pokemon();
       // j'appelle la méthode pour récupérer tous mes pokemons
-      $pokemons = $pokemonModel->findAll();
+      $pokemons = $pokemonsModel->findAll();
 
       // je stocke tous mes objets dans mon tableau afin d'y avoir accès dans ma page home
       $viewVars = [
@@ -21,9 +21,24 @@
       $this->show('home', $viewVars);
     }
 
-    public function details() {
+    public function details($routeVarInfos) {
 
-      $this->show('details');
+      /* dump($routeVarInfos); */
+
+      // j'instancie mon pokemon Model
+      $pokemonModel = new Pokemon();
+      // j'appelle la méthode find() pour récupérer tous les éléments de mon pokemon selon son id
+      // qu'on peut récupérer grace à $routeInfo['params'] dans index.php
+      $pokemon = $pokemonModel->find($routeVarInfos['id']);
+
+      // je stocke mes informations dans mon tableau afin d'y avoir accès dans ma page details
+      $viewVars = [
+        'pokemon' => $pokemon
+      ];
+
+      /* dump($viewVars); */
+
+      $this->show('details', $viewVars);
     }
 
     private function show($viewName, $viewVars = []) {

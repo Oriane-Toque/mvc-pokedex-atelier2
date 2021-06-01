@@ -7,7 +7,7 @@
   $router->setBasePath($_SERVER['BASE_URI']);
 
   $router->map('GET', '/', 'MainController@home', 'main.home');
-  $router->map('GET', '/details', 'MainController@details', 'main.details');
+  $router->map('GET', '/details/[i:id]', 'MainController@details', 'main.details');
 
   // récupération de toutes nos routes
   $routeInfo = $router->match();
@@ -30,4 +30,4 @@
   // j'instancie mon controlleur
   $controller = new $controllerName();
   // j'appelle la méthode correspondant à ma route
-  $controller->$methodName();
+  $controller->$methodName($routeInfo['params']);
