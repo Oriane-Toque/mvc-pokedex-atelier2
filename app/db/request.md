@@ -16,3 +16,15 @@ SELECT *
 FROM `pokemon`
 WHERE `id` = $id
 ```
+
+## Request to find type's pokemon (#id)
+
+```sql
+SELECT `type`.`name`, `color`
+FROM `type`
+INNER JOIN `pokemon_type`
+ON `type`.`id` = `pokemon_type`.`type_id`
+INNER JOIN `pokemon`
+ON `pokemon_type`.`pokemon_numero` = `pokemon`.`numero`
+WHERE `pokemon`.`id` = $id
+```

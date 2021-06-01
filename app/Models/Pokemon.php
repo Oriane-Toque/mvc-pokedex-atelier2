@@ -35,7 +35,7 @@
       // execution de la requete
       $pdoStatment = $pdo->query($sql);
       // je récupère le resultat sous forme d'objets
-      $result = $pdoStatment->fetchAll(PDO::FETCH_CLASS, '\Pokedex\models\Pokemon');
+      $result = $pdoStatment->fetchAll(PDO::FETCH_CLASS, '\Pokedex\Models\Pokemon');
 
       return $result;
     }
@@ -55,7 +55,7 @@
       // execution de la requete
       $pdoStatment = $pdo->query($sql);
       // je récupère le resultat sous forme d'objets
-      $result = $pdoStatment->fetchObject('\Pokedex\models\Pokemon');
+      $result = $pdoStatment->fetchObject('\Pokedex\Models\Pokemon');
 
       return $result;
     }

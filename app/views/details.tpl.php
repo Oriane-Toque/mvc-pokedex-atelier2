@@ -6,9 +6,11 @@
     </aside>
     <article>
       <h2><?= $viewVars['pokemon']->getNom(); ?></h2>
+      <?php foreach($viewVars['types'] as $type) : ?>
       <div class="type">
-        <p><span>Type (à voir cas plusieurs types)</span></p>
+        <p><span style="background-color: <?= $type->getColor(); ?>"><?= $type->getName(); ?></span></p>
       </div>
+      <?php endforeach; ?>
       <div class="stats">
         <div>
           <label for="pv">PV<span><?= $viewVars['pokemon']->getPv(); ?></span></label>
