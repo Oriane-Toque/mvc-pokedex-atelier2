@@ -7,6 +7,7 @@
 
 class Type {
 
+    private $id;
     private $name;
     private $color;
 
@@ -31,6 +32,24 @@ class Type {
       return $result;
     }
 
+    /* Méthode qui retourne tous les types */
+    public function findAll() {
+
+      $pdo = Database::getPDO();
+
+      $sql = "
+        SELECT *
+        FROM `type`
+        ORDER BY `id`
+        ASC
+      ";
+
+      $pdoStatment = $pdo->query($sql);
+      $result = $pdoStatment->fetchAll(PDO::FETCH_CLASS, '\Pokedex\Models\Type');
+
+      return $result;
+    }
+
     /**
      * Get the value of color
      */ 
@@ -45,5 +64,13 @@ class Type {
     public function getName()
     {
         return $this->name;
+    }
+
+    /**
+     * Get the value of id
+     */ 
+    public function getId()
+    {
+        return $this->id;
     }
   }

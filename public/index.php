@@ -8,6 +8,8 @@
 
   $router->map('GET', '/', 'MainController@home', 'main.home');
   $router->map('GET', '/details/[i:id]', 'MainController@details', 'main.details');
+  $router->map('GET', '/types', 'CatalogController@types', 'catalog.types');
+  $router->map('GET', '/types/[i:id]', 'CatalogController@pokemon', 'catalog.pokemon');
 
   // récupération de toutes nos routes
   $routeInfo = $router->match();

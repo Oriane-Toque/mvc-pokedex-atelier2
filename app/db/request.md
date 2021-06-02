@@ -28,3 +28,12 @@ INNER JOIN `pokemon`
 ON `pokemon_type`.`pokemon_numero` = `pokemon`.`numero`
 WHERE `pokemon`.`id` = $id
 ```
+
+## Request to find all types order by #id
+
+```sql
+SELECT *
+FROM `type`
+ORDER BY `id`
+ASC
+```

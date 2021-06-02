@@ -16,8 +16,8 @@
         <h1>Pokédex</h1>
         <nav>
           <ul>
-            <li><a href="#">Liste</a></li>
-            <li><a href="#">Types</a></li>
+            <li><a href="<?= $router->generate('main.home'); ?>">Liste</a></li>
+            <li><a href="<?= $router->generate('catalog.types') ?>">Types</a></li>
           </ul>
         </nav>
       </header>
