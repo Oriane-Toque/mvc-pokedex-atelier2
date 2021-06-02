@@ -129,10 +129,12 @@ header a:hover {
 
 .pokemonDescription>aside {
   width: 100%;
+  padding: 20px;
+  align-self: center;
 }
 
 .pokemonDescription>aside img {
-  max-width: 100%;
+  width: 70%;
 }
 
 .pokemonDescription>article {
@@ -212,6 +214,7 @@ header a:hover {
 .listTypes>div p {
   text-align: center;
   padding: 20px 20px;
+  border-radius: 0.5rem;
 }
 
 .listTypes>div a {
@@ -229,6 +232,14 @@ header a:hover {
   .pokemonList {
     grid-template-columns: repeat(2, 1fr);
   }
+
+  .listTypes {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .listTypes>h2 {
+    grid-column: span 3;
+  }
 }
 
 @media screen and (min-width: 900px) {
@@ -245,6 +256,22 @@ header a:hover {
   .pokemonList {
     grid-template-columns: repeat(3, 1fr);
     margin: 0;
+  }
+
+  .listTypes {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .listTypes>h2 {
+    grid-column: span 4;
+  }
+
+  .pokemonDescription {
+    flex-direction: row;
+  }
+
+  .pokemonDescription>aside img {
+    width: 90%;
   }
 }
 
