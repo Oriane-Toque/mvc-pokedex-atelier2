@@ -153,4 +153,7 @@
     {
         return $this->attaque;
     }
+
   }
+
+?>

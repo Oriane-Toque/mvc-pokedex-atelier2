@@ -26,7 +26,7 @@
 
       // j'instancie mon model
       $pokemonsModel = new Pokemon();
-      // j'appelle la fonction findAllByType afin qu'elle me retourne les infos des pokemons selon leur type_id
+      // j'appelle la fonction findAllByType afin qu'elle me retourne la liste des pokemons selon leur type_id
       $pokemons = $pokemonsModel->findAllByType($routeVarInfos['id']);
 
       // je stocke mes objets dans mon tableau
@@ -34,7 +34,16 @@
         'pokemons' => $pokemons
       ];
 
-      $this->show('list.pokemon', $viewVars);
+      if(empty($pokemons)) {
+
+        http_response_code(404);
+        echo "404, page introuvable";
+        exit();
+
+      } else {
+
+        $this->show('list.pokemon', $viewVars);
+      }
     }
   }
 

@@ -45,6 +45,12 @@
 
       /* dump($viewVars); */
 
-      $this->show('details', $viewVars);
+      if($pokemon === false || empty($pokemon) || empty($types)) {
+        http_response_code(404);
+        echo "ERROR 404, page introuvable";
+        exit;
+      } else {
+        $this->show('details', $viewVars);
+      }
     }
   }
