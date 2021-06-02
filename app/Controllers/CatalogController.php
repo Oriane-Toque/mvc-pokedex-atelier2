@@ -2,9 +2,10 @@
 
   namespace Pokedex\Controllers;
 
-use Pokedex\Models\Type;
+  use Pokedex\Models\Pokemon;
+  use Pokedex\Models\Type;
 
-class CatalogController extends CoreController {
+  class CatalogController extends CoreController {
 
     public function types() {
 
@@ -21,8 +22,20 @@ class CatalogController extends CoreController {
       $this->show('list.types', $viewVars);
     }
 
-    public function pokemon() {
+    public function pokemon($routeVarInfos) {
 
-      $this->show('list.pokemon');
+      // j'instancie mon model
+      $pokemonsModel = new Pokemon();
+      // j'appelle la fonction findAllByType afin qu'elle me retourne les infos des pokemons selon leur type_id
+      $pokemons = $pokemonsModel->findAllByType($routeVarInfos['id']);
+
+      // je stocke mes objets dans mon tableau
+      $viewVars = [
+        'pokemons' => $pokemons
+      ];
+
+      $this->show('list.pokemon', $viewVars);
     }
   }
+
+?>

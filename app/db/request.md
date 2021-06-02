@@ -37,3 +37,14 @@ FROM `type`
 ORDER BY `id`
 ASC
 ```
+
+## Request to find all pokemon by (#id) type order by numero
+
+```sql
+SELECT *
+FROM `pokemon`
+INNER JOIN `pokemon_type`
+ON `pokemon`.`numero` = `pokemon_type`.`pokemon_numero`
+WHERE `type_id` = $id
+ORDER BY `pokemon`.`numero`
+```
